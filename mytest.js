@@ -33,20 +33,20 @@ _D.addEvent(box1,"click", function(){
 
 });
 var i = 0 ;
-_D.addEvent(document,"click",function(event){
+_D.addEvent(box1,"click",function(event){
 	var arr = [
      "clientX : ",event.clientX,
      "clientY : ",event.clientY,
-     "clientY : ",event.pageX,
-     "clientY : ",event.pageY
+     "pageX : ",event.pageX,
+     "pageY : ",event.pageY
 	];
 
 	_D.getByClass("textArea")[0].innerHTML= arr.join("") ;
 	alert(_D.getByClass("textArea")[0] );
 
-	_D.addWheelListener(box1,function(event){ console.log("@@@");
-	  event.preventDefault();
-	});
+	// _D.addWheelListener(box1,function(event){ console.log("@@@");
+	//   event.preventDefault();
+	// });
 });
 
 

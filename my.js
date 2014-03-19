@@ -271,12 +271,12 @@
 
    _.getScrollTop = function(elem){
      var doc = elem ? elem.ownerDocument:document ; 
-     return doc.document.scrollTop || doc.body.srcollTop ; 
+     return doc.documentElement.scrollTop || doc.body.scrollTop ; 
     };
 
    _.getScrollLeft=function(elem){
       var doc  =elem ? elem.ownerDocument : document ; 
-      return doc.document.documentElement.scrollLeft || doc.body.scrollLeft ; 
+      return doc.documentElement.scrollLeft || doc.body.scrollLeft ; 
     };
 
   _.hasClass=function(elem,className){
@@ -490,8 +490,8 @@
   _.fixEvent= function  (event){
       if(event) return event ;  //如果存在标准的事件 则不修复 直接返回标准事件对象
       event = window.event;
-      event.pageX = event.clientX+ _.getScrollLeft;
-      event.pageY = event.clientY + _.getScrollTop;
+      event.pageX = event.clientX+ _.getScrollLeft();
+      event.pageY = event.clientY + _.getScrollTop();
       event.target = event.srcElement;
       event.stopPropagation = function(){ this.cancelBubble =true; };
       event.preventDefault =function (){ this.returnValue = false ;};
