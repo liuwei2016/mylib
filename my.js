@@ -335,10 +335,19 @@
       elem2.parentNode.replaceChild(elem2,elem1);
       tmp.parentNode.replaceChild(elme1,tmp);
       document.removeChild(tmp); //删除文本节点
-
     };
 
-    _.getStyle = function(elem,name){
+  _.offset = function(elem){
+    var result ={ top:0, left:0};
+    while(elem.parentNode){
+       result.top  += elem.offsetTop;
+       result.left += elem.offsetLeft;
+       elem = elem.parentNode ; 
+    }
+    return result ; 
+  }
+
+  _.getStyle = function(elem,name){
         return (this.getStyle = document.defaultView
              ? function(elem,name){
                var style =document.defaultView.getComputedStyle(elem,null);
@@ -655,7 +664,7 @@
 
     _.animate=function(elem,start,alter, dur,fx,complete){
       //elem,start,alter, dur,fx  dom 元素 开始量 变化量 持续时间  运动函数
-       var curTime = 0; timeout = 1000/60 ;
+       var curTime = 0; timeout = 20 ;
        var timer = setInterval(function(){
          
         for(var i in start){
